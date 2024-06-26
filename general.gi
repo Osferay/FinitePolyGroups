@@ -1,17 +1,16 @@
-IsCentralPcp := function(G, pcp)
+####################################################################
+### Returns true if N/M is central in G/M                        ###
+####################################################################
 
-    local   M,
-            N,
-            gen,
+IsCentralFactor := function(G, N, M)
+
+    local   gen,
             gens;
-    
-    M    := NumeratorOfPcp(pcp);
-    N    := Subgroup(G, DenominatorOfPcp(pcp));
 
-    gen  := Filtered( M, x -> not x in N )[1];
-    gens := Filtered( Igs(G), x -> not x in N );
+    gen  := Filtered( Igs(N), x -> not x in M )[1];
+    gens := Filtered( Igs(G), x -> not x in M );
 
-    if ForAll( gens, x -> Comm(x, gen) in N ) then
+    if ForAll( Igs(G), x -> Comm(x, gen) in M ) then
         return true;
     else
         return false;
@@ -191,9 +190,10 @@ InstallGlobalFunction( "ExponentCyclicPcpFactor", function( pcp, g)
     gen := M[1];
     d   := Depth(gen);
     exp := Exponents(g)[d];
-
+    
     if Length(M) <> Length(N) and Length(N) <> 0 then
-        exp := [ exp ];
+        a :=   Exponents( gen )[d];
+        exp := [ exp / a ];
     elif Length(N) = 0 then
         a   :=   Exponents( gen )[d];
         exp := [ exp / a ];

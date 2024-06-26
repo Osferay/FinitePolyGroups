@@ -1,14 +1,24 @@
-### general.g
+### info
+
+DeclareInfoClass( "InfoPcToPcpGroup" );
+DeclareInfoClass( "InfoConjugacy" );
+
+### general.gi
 
 DeclareGlobalFunction( "ConjugacyOrder" );
 DeclareGlobalFunction( "Sifting" );
 DeclareGlobalFunction( "ExponentCyclicPcpFactor");
 
+### series.gi
+
+DeclareAttribute( "CeaSeries", IsPcpGroup );
+DeclareAttribute( "PcpsOfCeaSeries", IsPcpGroup );
+
 ### conjugacy.gi
 
-DeclareGlobalFunction( "CentralizerPolyGroup" );
+DeclareGlobalFunction( "CentralizerFinitePoly" );
+DeclareGlobalFunction( "IsConjugateFinitePoly" );
 
-### info
+### exam.gi
 
-DeclareInfoClass( "InfoPcToPcpGroup" );
-DeclareInfoClass( "InfoConjugacy" );
+DeclareGlobalFunction( "FromPcGroupToPcpGroup" );
