@@ -28,8 +28,6 @@ AffineActionOnCyclicPcp := function(G, A, g )
         od;
 
         c := ExponentCyclicPcpFactor( A, Comm( g, G[i] ));
-        Print(c, "\n");
-        Print( Comm(g, G[i]), "\n");
         Add( c, 1 );
         Add( act[i], c);
     od;
